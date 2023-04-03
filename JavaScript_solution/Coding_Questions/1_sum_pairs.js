@@ -5,20 +5,21 @@ Sample Input: array = [ 3, 5, -4, 8, 11, 1, -1, 6 ], target = 10
 Sample Output: [ -1, 11 ] */
 
 function sum_pairs(array, target) {
-    const unique_array = new Set();//blank object
-    let sum_pair=[];
-    for (let i = 0; i < array.length; i++) {
-      const diff = target - array[i];
-      if (unique_array.has(diff)) {
-        sum_pair.unshift([diff,  array[i]]);
-      }
-      unique_array.add( array[i]);
-     }
-    return sum_pair;
+  const unique_array = [];
+  let sum_pair=[];
+  for (let i = 0; i < array.length; i++) {
+    const diff = target - array[i];
+    if (unique_array.includes(diff)) {
+      sum_pair.unshift([diff, array[i]]);
+    }
+    unique_array.push(array[i]);
   }
-  
-  let output = sum_pairs([ 3,2,5,2,-4,8,11,1,-1,6 ],10);
-  console.log(output)
+  return sum_pair;
+}
+
+let output = sum_pairs([ 3,2,5,2,-4,8,11,1,-1,6 ],10);
+console.log(output);
+
 
 
  
