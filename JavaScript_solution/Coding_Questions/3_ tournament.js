@@ -31,17 +31,12 @@ function tournamentWinner(competitions, results) {
     let count = 0;
     for (let i = 0; i < competitions.length-1; i++) {
   
-        const home_team =competitions[i]
-        const away_team =competitions[i+1];
-        if(home_team === away_team){
-            continue;
-        }
-        else
-        {
+      const [home_team, away_team] = competitions[i];
+  
              const winner = results[count] === 1 ? home_team : away_team;
             points[winner] = (points[winner] || 0) + 3;
              count++;
-        }
+         
     }
 
     function extractMaxKey(points) {
@@ -51,5 +46,5 @@ function tournamentWinner(competitions, results) {
     return extractMaxKey(points);
   }
 
-  console.log(tournamentWinner( [ "HTML", "C#", "Python", "Python", "HTML" ],[ 0, 0, 1]))
+  console.log(tournamentWinner([ ["HTML", "C#"], ["C#", "Python"], ["Python", "HTML"] ],[ 0, 0, 1]))
   
